@@ -29,26 +29,55 @@
   /* It's good practice to also define your base colors */
   --color-white: #FFFFFF;
   --color-black: #000000;
+  --font-Roboto: 'Jost' , sans-serif;
 }
 
 @layer base {
   body {
-    /* Using one of our newly defined colors as the default text color */
+    font-family: 'Jost', sans-serif;
     color: var(--color-text-primary);
   }
 }
 
 @layer components {
   
+
+  @font-face {
+  font-family: Jost;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("/assets/fonts/Jost-Medium.woff") format("woff");
+}
+
+  /* ADD/UPDATE THESE STYLES FOR THE DOTS */
+  #project-dots .dot,
+  #recent-dots .dot,
+  #amenities-dots .dot,
+  #masterplan-dots .dot,
+  #testimonial-dots .dot,
+  #gallery-dots .dot {
+    @apply block w-2.5 h-2.5 rounded-full cursor-pointer bg-gray-400 transition-colors;
+  }
+
+  #project-dots .dot.active {
+    @apply bg-brand-purple;
+  }
+
+  /* Example for other sections if they need a different active color */
+  #recent-dots .dot.active {
+    @apply bg-black;
+  }
   /* NEW STYLE FOR FLOOR PLAN CATEGORY BUTTONS */
-  .floorplan-category-btn {
-    @apply text-text-secondary transition-colors duration-200;
+ .floorplan-category-btn {
+    @apply text-text-secondary font-semibold text-left text-lg py-3 px-6 transition-colors duration-200;
   }
   .floorplan-category-btn.active {
     @apply bg-brand-gold text-black;
   }
 
   /* NEW STYLE FOR GALLERY TABS */
+
   .gallery-tab-btn {
     @apply text-text-secondary bg-transparent transition-colors duration-200;
   }
@@ -56,6 +85,13 @@
     @apply bg-brand-purple text-white;
   }
 
+  #gallery-dots .dot.active {
+    @apply bg-black;
+  }
+
+  #amenities-dots .dot.active {
+    @apply bg-black;
+  }
   /* NEW STYLE FOR LOCATION TABS */
   .location-tab {
     @apply font-semibold text-text-secondary py-2 border-b-2 border-transparent -mb-px;
