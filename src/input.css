@@ -1,36 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /*
-  |--------------------------------------------------------------------------
-  | Custom AN Group Color Palette
-  |--------------------------------------------------------------------------
-  |
-  | Here we define the custom colors for the project based on the provided
-  | color palette. These will be available as utility classes like:
-  | text-brand-purple, bg-brand-gold, border-brand-brown, etc.
-  |
-  */
+  /* ... (your existing theme colors) ... */
   --color-brand-purple: #764199;
   --color-brand-gold: #F5B11E;
   --color-brand-brown: #191307;
   --color-brand-beige: #D6C4B0;
   --color-brand-peach: #FFEED7;
   --color-brand-cream: #FFF7ED;
-
-  /* Shades of Gray & Black */
   --color-text-primary: #585858;
   --color-text-secondary: #737373;
   --color-gray-light: #D9D9D9;
   --color-gray-medium: #C1C1C1;
   --color-off-white: #F0F0F0;
   --color-footer-bg: #262626;
-
-  /* It's good practice to also define your base colors */
   --color-white: #FFFFFF;
   --color-black: #000000;
   --font-Roboto: 'Jost' , sans-serif;
+
+  --swiper-pagination-color: #000000;
 }
+
 
 @layer base {
   body {
@@ -41,85 +31,145 @@
 
 @layer components {
   
-
   @font-face {
-  font-family: Jost;
-  font-style: normal;
-  font-weight: 200 700;
-  font-display: swap;
-  src: url("/assets/fonts/Jost-Medium.woff") format("woff");
-}
-
-  /* ADD/UPDATE THESE STYLES FOR THE DOTS */
-  #project-dots .dot,
-  #recent-dots .dot,
-  #amenities-dots .dot,
-  #masterplan-dots .dot,
-  #testimonial-dots .dot,
-  #gallery-dots .dot {
-    @apply block w-2.5 h-2.5 rounded-full cursor-pointer bg-gray-400 transition-colors;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url("/assets/fonts/Jost-Medium.woff") format("woff");
   }
 
-  #project-dots .dot.active {
-    @apply bg-brand-purple;
+  /*
+  |--------------------------------------------------------------------------
+  | NEW STYLES FOR HEADER NAVIGATION
+  |--------------------------------------------------------------------------
+  */
+  .desktop-nav-link {
+    @apply relative text-lg font-medium text-white transition-colors duration-200 hover:text-brand-peach;
   }
 
-  /* Example for other sections if they need a different active color */
-  #recent-dots .dot.active {
-    @apply bg-black;
-  }
-  /* NEW STYLE FOR FLOOR PLAN CATEGORY BUTTONS */
- .floorplan-category-btn {
-    @apply text-text-secondary font-semibold text-left text-lg py-3 px-6 transition-colors duration-200;
-  }
-  .floorplan-category-btn.active {
-    @apply bg-brand-gold text-black;
+  /* Underline effect for desktop links */
+  .desktop-nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-brand-peach transform scale-x-0 origin-center transition-transform duration-300;
   }
 
-  /* NEW STYLE FOR GALLERY TABS */
-
-  .gallery-tab-btn {
-    @apply text-text-secondary bg-transparent transition-colors duration-200;
-  }
-  .gallery-tab-btn.active {
-    @apply bg-brand-purple text-white;
+  .desktop-nav-link:hover::after {
+    @apply scale-x-100;
   }
 
-  #gallery-dots .dot.active {
-    @apply bg-black;
+  /* Style for dropdown links */
+  .dropdown-link {
+    @apply block w-full text-left px-4 py-2 text-lg text-text-primary hover:bg-gray-100;
   }
 
-  #amenities-dots .dot.active {
-    @apply bg-black;
+  /* Style for mobile nav links */
+  .mobile-nav-link {
+    @apply block w-full py-3 text-gray-200;
   }
-  /* NEW STYLE FOR LOCATION TABS */
-  .location-tab {
-    @apply font-semibold text-text-secondary py-2 border-b-2 border-transparent -mb-px;
-    /* -mb-px pulls the bottom border down to overlap the container's border */
+
+  
+
+  /*
+  |--------------------------------------------------------------------------
+  | SWIPER SLIDER STYLES
+  |--------------------------------------------------------------------------
+  */
+
+  .swiper-pagination-bullet {
+    @apply w-2.5 h-2.5 rounded-full cursor-pointer bg-gray-300 opacity-100 transition-colors;
   }
-  .location-tab.active {
-    @apply border-black text-black;
+
+  .testimonial-swiper .swiper-slide { @apply h-auto; }
+
+  .gallery-swiper { @apply w-full; }
+  .gallery-swiper .swiper-slide {
+    @apply w-10/12 md:w-8/12 lg:w-7/12 aspect-video md:aspect-[4/3] transition-transform duration-300;
+  }
+  .gallery-swiper .swiper-slide:not(.swiper-slide-active) {
+    @apply scale-90 opacity-70;
   }
   
-  /* ADD THIS NEW CODE FOR THE RESPONSIVE VIDEO */
-  .video-responsive-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
+  /* Amenities Swiper Styles (NEW) */
+  .amenities-swiper {
+      @apply px-6 md:px-0; /* Add padding on mobile to prevent touching edges, remove on desktop */
+  }
+  .amenities-swiper .swiper-slide {
+      @apply h-auto;
+  }
+  /* On screens smaller than md, set a specific width. On md and larger, Swiper's slidesPerView: 3 takes over. */
+  @screen <md {
+    .amenities-swiper .swiper-slide {
+        @apply w-10/12;
+    }
   }
 
-  .video-responsive-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  /* Active colors for each specific slider section */
+  #project-dots .swiper-pagination-bullet-active { @apply bg-brand-purple; }
+  
+  #testimonial-dots .swiper-pagination-bullet-active,
+  #masterplan-dots .swiper-pagination-bullet-active,
+  #floorplan-dots .swiper-pagination-bullet-active,
+  #gallery-dots .swiper-pagination-bullet-active,
+  #amenities-dots .swiper-pagination-bullet-active { /* UPDATED */
+    @apply bg-black;
   }
+
+  #recent-dots .swiper-pagination-bullet-active { @apply bg-black; }
+
+  #testimonial-avatars .avatar {
+      @apply w-16 h-16 rounded-full border-4 border-white cursor-pointer transition-all duration-300 transform scale-100 hover:scale-110;
+  }
+  #testimonial-avatars .avatar.active {
+      @apply border-brand-gold scale-110;
+  }
+  
+  /*
+  |--------------------------------------------------------------------------
+  | OTHER COMPONENT STYLES
+  |--------------------------------------------------------------------------
+  */
+
+  .floorplan-category-btn {
+    @apply text-text-secondary font-semibold text-center md:text-left text-lg py-3 px-6 transition-colors duration-200;
+  }
+  .floorplan-category-btn.active { @apply bg-brand-gold text-black; }
+
+  .gallery-tab-btn {
+    @apply font-semibold text-text-secondary py-2 px-4 text-lg transition-colors duration-200;
+  }
+  .gallery-tab-btn.active { @apply bg-brand-purple text-white; }
+
+  .location-tab {
+    @apply font-semibold text-text-secondary py-2 border-b-2 border-transparent -mb-px;
+  }
+  .location-tab.active { @apply border-black text-black; }
+  
+  .video-responsive-container {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  }
+  .video-responsive-container iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | LIGHTBOX STYLES (ADD THIS)
+  |--------------------------------------------------------------------------
+  */
+  .lightbox-video-wrapper {
+    @apply relative w-full;
+    padding-top: 56.25%; /* This creates a 16:9 aspect ratio */
+  }
+
+  .lightbox-video-wrapper iframe {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+
 }
 
 @layer utilities {
-  /* 
-   * We will add custom utility classes here if needed.
-   */
+  /* Custom utility classes if needed */
 }

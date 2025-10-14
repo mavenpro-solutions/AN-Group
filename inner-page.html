@@ -5,56 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nirmala Sree - AN Group</title>
     <!-- Your existing CSS and JS links -->
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="output.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="bg-brand-cream" style="background-image: url('images/marble-background.png'); background-size: cover;">
 
-    <!-- ======================================================= -->
-    <!-- HEADER (CORRECTED: FLOATING OVER CONTENT) -->
-    <!-- ======================================================= -->
-    <header class="absolute top-8 left-0 w-full z-30">
-        <div class="container mx-auto">
-             <div class="flex justify-between items-center bg-white shadow-md text-black px-4 py-2 ">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-3">
-                    <img src="assets/images/logos/logo.png" alt="AN Group Logo" class="w-16">
-                    <span class="text-xl font-semibold tracking-wider">AN GROUP</span>
-                </a>
+<!-- ======================================================= -->
+<!-- HEADER (FLOATING, FUNCTIONAL, & RESPONSIVE) -->
+<!-- ======================================================= -->
+<header class="absolute top-0 left-0 w-full z-40 p-4 md:pt-8">
+    <div class="container mx-auto">
+         <!-- Main Header Bar -->
+         <div class="flex justify-between items-center bg-white shadow-lg text-black px-4 py-2">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="assets/images/logos/logo.png" alt="AN Group Logo" class="w-12 md:w-16">
+                <span class="hidden sm:block text-xl font-semibold tracking-wider">AN GROUP</span>
+            </a>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="bg-brand-purple text-white px-6 py-3 font-semibold hover:bg-opacity-90 transition rounded-md">ENQUIRE NOW</a>
-                    <div class="flex items-center space-x-4">
-                        <span class="font-semibold text-lg">MENU</span>
-                        <!-- Menu Burger SVG (with black fill) -->
-                        <button id="menu-btn">
-                             <svg width="40" height="15" viewBox="0 0 52 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0L52 0V2L0 2V0Z" fill="black"/>
-                                <path d="M16 9L52 9V11L16 11V9Z" fill="black"/>
-                                <path d="M26 19L52 19V21L26 21V19Z" fill="black"/>
-                            </svg>
-                        </button>
-                    </div>
-                </nav>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-black focus:outline-none">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
-                </div>
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="bg-brand-purple text-white px-6 py-3 font-semibold hover:bg-opacity-90 transition rounded-md">ENQUIRE NOW</a>
+                <button id="desktop-menu-btn" class="flex items-center space-x-4 focus:outline-none">
+                    <span class="font-semibold text-lg">MENU</span>
+                    <svg width="40" height="15" viewBox="0 0 52 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L52 0V2L0 2V0Z" fill="black"/>
+                        <path d="M16 9L52 9V11L16 11V9Z" fill="black"/>
+                        <path d="M26 19L52 19V21L26 21V19Z" fill="black"/>
+                    </svg>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-black focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
         </div>
-    </header>
-
-    <!-- Mobile Menu Panel (same as homepage) -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-90 z-40 text-white text-center p-8">
-        <a href="index.html" class="block py-4 text-2xl">Home</a>
-        <a href="#" class="block py-4 text-2xl">Projects</a>
-        <a href="#" class="block py-4 text-2xl">About Us</a>
-        <a href="#" class="block py-4 text-2xl">Contact</a>
     </div>
+
+    <!-- Full Screen Menu Panel (For Desktop & Mobile) -->
+    <div id="full-menu-overlay" class="fixed inset-0 bg-black bg-opacity-95 z-50 text-white p-8 hidden">
+        <div class="flex justify-end mb-12">
+            <button id="menu-close-btn" class="text-5xl font-light">&times;</button>
+        </div>
+        <div class="flex flex-col space-y-4 text-2xl text-center">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="#" class="mobile-nav-link">About</a>
+            <div>
+                <button id="mobile-projects-btn" class="mobile-nav-link w-full flex justify-center items-center space-x-2">
+                    <span>Projects</span>
+                    <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="mobile-projects-submenu" class="pl-4 mt-2 hidden">
+                    <a href="#" class="block py-2 text-xl text-gray-300">Ongoing</a>
+                    <a href="#" class="block py-2 text-xl text-gray-300">Recent</a>
+                    <a href="#" class="block py-2 text-xl text-gray-300">Past</a>
+                </div>
+            </div>
+            <a href="#" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+</header>
 
 
     <!-- MAIN CONTENT -->
@@ -62,7 +77,7 @@
         <!-- ======================================================= -->
         <!-- PROJECT HERO SECTION -->
         <!-- ======================================================= -->
-        <section class="relative pt-48 pb-16">
+        <section class="relative pt-48 pb-16" style="background-image: url('assets/images/image/peach-marble-texture 1.png'); background-size: cover;">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
                 <!-- Left Column: Project Details (Constrained) -->
                 <div class="container mx-auto px-6 md:px-48">
@@ -116,7 +131,7 @@
         <!-- ======================================================= -->
         <!-- WALK-THROUGH SECTION -->
         <!-- ======================================================= -->
-        <section class="bg-brand-cream py-16 md:py-24">
+        <!-- <section class="bg-brand-cream py-16 md:py-24">
             <div class=" mx-auto ">
                 <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center mb-12 px-6 md:px-0">
                     <div><h2 class="text-4xl md:text-5xl font-bold text-brand-purple">Walk - Through</h2></div>
@@ -130,48 +145,111 @@
                     </div>
                 </a>
             </div>
-        </section>
+        </section> -->
 
-        
- <!-- ======================================================= -->
-<!-- MASTER PLAN SECTION (CORRECTED & FINAL DESIGN) -->
+
+        <!-- ======================================================= -->
+<!-- WALK-THROUGH SECTION (NEW & RESPONSIVE) -->
 <!-- ======================================================= -->
-<section id="masterplan-slider" class="bg-brand-peach py-16 md:py-24" style="background-image: url('assets/images/image/marble-background-2.jpg'); background-size: cover;">
+<section class="walkthrough-section bg-brand-cream pt-16 md:pt-24">
     <div class="container mx-auto px-6">
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold text-black tracking-wider">MASTER PLAN</h2>
-            <p class="text-text-primary mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-purple tracking-wider">Walk - Through</h2>
+            </div>
+            <div>
+                <p class="text-text-primary mt-2 md:pt-2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
+                </p>
+            </div>
         </div>
 
-        <!-- Master Plan Slider Card -->
-        <div class="relative max-w-4xl mx-auto bg-white p-3 shadow-xl">
-            <!-- This container holds the image and all overlays -->
-            <div id="masterplan-slider-container" class="relative w-full aspect-w-16 aspect-h-9">
-                <!-- Images will be injected here by JS -->
+        <!-- Video Trigger -->
+        <a href="#" 
+           class="js-lightbox block relative group" 
+           data-type="video" 
+           data-src="https://www.youtube.com/embed/dQw4w9WgXcQ"> <!-- Replace with your YouTube Video Embed URL -->
+            
+            <img src="assets/images/image/Rectangle 70.png" alt="Project Walk-Through" class="w-full h-auto shadow-lg">
+            
+            <!-- YouTube Play Icon -->
+            <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors duration-300">
+                <svg class="w-20 h-20 md:w-28 md:h-28 text-red-600 drop-shadow-lg transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 70" fill="currentColor">
+                    <path d="M98.12,11.23a12.42,12.42,0,0,0-8.73-8.73C81.1,0,50,0,50,0S18.9,0,10.61,2.5A12.42,12.42,0,0,0,1.88,11.23,129.7,129.7,0,0,0,0,35a129.7,129.7,0,0,0,1.88,23.77,12.42,12.42,0,0,0,8.73,8.73C18.9,70,50,70,50,70s31.1,0,39.39-2.5a12.42,12.42,0,0,0,8.73-8.73A129.7,129.7,0,0,0,100,35,129.7,129.7,0,0,0,98.12,11.23Z" />
+                    <polygon fill="#FFFFFF" points="40 51.25 66.25 35 40 18.75 40 51.25" />
+                </svg>
+            </div>
+        </a>
+    </div>
+</section>
 
-                <!-- Vignette Overlay: Creates the subtle shadow around the edges -->
-                <div class="absolute inset-0 shadow-[inset_0px_0px_30px_10px_rgba(0,0,0,0.2)]"></div>
+<!-- ======================================================= -->
+<!-- MASTER PLAN SECTION (NEW & RESPONSIVE) -->
+<!-- ======================================================= -->
+<section class="py-16 md:py-24"style="background-image: url('assets/images/image/marble-background.png'); background-size: cover;">
+    <div class="container mx-auto px-6 text-center">
 
-                <!-- Gradient Overlay: For the text at the bottom -->
-                <div id="masterplan-overlay" class="absolute bottom-0 left-0 right-0 p-6 pt-12 bg-gradient-to-t from-black/80 to-transparent text-white">
-                    <p id="masterplan-description" class="transition-opacity duration-300 text-center max-w-3xl mx-auto"></p>
+        <!-- Section Header -->
+        <h2 class="text-4xl md:text-5xl font-bold text-black tracking-wider">MASTER PLAN</h2>
+        <p class="max-w-xl mx-auto mt-4 mb-12 text-text-primary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
+        </p>
+
+        <!-- Master Plan Swiper -->
+        <div class="swiper masterplan-swiper max-w-4xl mx-auto">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide relative">
+                    <img src="assets/images/image/building-1.png" alt="Master Plan 1" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white text-left md:text-center">
+                        <p class="text-sm md:text-base leading-relaxed">
+                            AN Group redefines urban living in Kolkata. Since 2006, we've been creating elegant 2, 3 & 4 BHK residences that blend thoughtful design, comfort, and lifestyle—crafted for those who seek more than just a home.
+                        </p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide relative">
+                    <img src="assets/images/image/building-1.png" alt="Master Plan 2" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white text-left md:text-center">
+                        <p class="text-sm md:text-base leading-relaxed">
+                            Our master plans focus on maximizing green spaces and community areas, ensuring a balanced and harmonious living environment for all our residents.
+                        </p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide relative">
+                    <img src="assets/images/image/building-1.png" alt="Master Plan 3" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white text-left md:text-center">
+                        <p class="text-sm md:text-base leading-relaxed">
+                            Every detail is meticulously planned, from the orientation of the buildings to the flow of traffic, creating a seamless and premium residential experience.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- Slider Navigation -->
-        <div class="flex justify-center items-center mt-8 space-x-6 text-text-secondary">
-            <button id="masterplan-back" class="font-medium hover:text-black transition">&larr; Back</button>
-            <div id="masterplan-dots" class="flex items-center space-x-2">
-                <!-- Dots are populated by JS -->
+        <div class="flex justify-between items-center mt-8 max-w-sm mx-auto md:max-w-md">
+            <button id="masterplan-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                <span>&larr;</span>
+                <span class="hidden md:inline">Back</span>
+            </button>
+            <div id="masterplan-dots" class="flex justify-center items-center space-x-2">
+                <!-- Swiper pagination will be injected here -->
             </div>
-            <button id="masterplan-next" class="font-medium hover:text-black transition">Next &rarr;</button>
+            <button id="masterplan-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                <span class="hidden md:inline">Next</span>
+                <span>&rarr;</span>
+            </button>
         </div>
     </div>
 </section>
+
+
  <!-- ======================================================= -->
     <!-- SPECIFICATIONS SECTION (ADD THIS CODE) -->
     <!-- ======================================================= -->
@@ -336,71 +414,113 @@
         </div>
     </section>
 
-    <!-- ======================================================= -->
-<!-- FLOOR PLANS SECTION (CORRECTED & FINAL) -->
 <!-- ======================================================= -->
-<section id="floorplan-section" class="bg-brand-peach py-16 md:py-24" style="background-image: url('assets/images/image/peach-marble-texture\ 1.png'); background-size: cover;">
+<!-- FLOOR PLANS SECTION (NEW & RESPONSIVE) -->
+<!-- ======================================================= -->
+<section id="floorplan-section" class="py-16 md:py-24" style="background-image: url('assets/images/image/peach-marble-texture 1.png'); background-size: cover;">
     <div class="container mx-auto px-6">
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
 
-            <!-- Left Column: Categories -->
+            <!-- Left Column: Title & Tabs -->
             <div class="lg:col-span-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-black mb-10">FLOOR PLANS</h2>
-                <!-- Category buttons will be generated by JS -->
-                <div id="floorplan-categories" class="space-y-2"></div>
+                <h2 class="text-4xl md:text-5xl font-bold text-black tracking-wider mb-8 md:mb-12">FLOOR PLANS</h2>
+                <!-- Tabs -->
+                <div id="floorplan-categories" class="grid grid-cols-2 gap-4 md:flex md:flex-col md:items-start md:space-y-2">
+                    <button class="floorplan-category-btn active" data-category="category1">CATEGORY 1</button>
+                    <button class="floorplan-category-btn" data-category="category2">CATEGORY 2</button>
+                    <button class="floorplan-category-btn" data-category="category3">CATEGORY 3</button>
+                    <button class="floorplan-category-btn" data-category="category4">CATEGORY 4</button>
+                </div>
             </div>
 
-            <!-- Right Column: Image Slider -->
-            <div class="lg:col-span-8">
-                <!-- This container clips the slider -->
-                <div id="floorplan-slider" class="relative w-full overflow-hidden">
-                    <div id="floorplan-track" class="flex transition-transform duration-500 ease-in-out">
-                        <!-- Image slides will be injected by JS -->
+            <!-- Right Column: Slider -->
+            <div class="lg:col-span-8 w-full overflow-hidden">
+                <!-- Floor Plan Swiper -->
+                <div class="swiper floorplan-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Initial slides for Category 1 are loaded here -->
+                        <div class="swiper-slide p-2">
+                            <img src="assets/images/image/building-1.png" class="w-full h-auto object-contain">
+                        </div>
+                        <div class="swiper-slide p-2">
+                            <img src="assets/images/image/building-1.png" class="w-full h-auto object-contain">
+                        </div>
+                         <div class="swiper-slide p-2">
+                            <img src="assets/images/image/building-1.png" class="w-full h-auto object-contain">
+                        </div>
                     </div>
                 </div>
-                 <!-- Slider Navigation -->
-                <div class="flex justify-center items-center mt-8 space-x-6 text-text-secondary">
-                    <button id="floorplan-back" class="font-medium hover:text-black transition">&larr; Back</button>
-                    <div id="floorplan-dots" class="flex items-center space-x-2"></div>
-                    <button id="floorplan-next" class="font-medium hover:text-black transition">Next &rarr;</button>
+
+                <!-- Slider Navigation -->
+                <div class="flex justify-between items-center mt-8 max-w-sm mx-auto">
+                    <button id="floorplan-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                        <span>&larr;</span>
+                        <span class="hidden md:inline">Back</span>
+                    </button>
+                    <div id="floorplan-dots" class="flex justify-center items-center space-x-2">
+                        <!-- Swiper pagination -->
+                    </div>
+                    <button id="floorplan-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                        <span class="hidden md:inline">Next</span>
+                        <span>&rarr;</span>
+                    </button>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
     
-    <!-- ======================================================= -->
-    <!-- GLIMPSES GALLERY SECTION (ADD THIS CODE) -->
-    <!-- ======================================================= -->
-    <section id="glimpses-gallery" class="bg-white py-16 md:py-24">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold text-brand-purple">Glimpses Gallery</h2>
-            </div>
-
-            <!-- Gallery Tabs -->
-            <div id="gallery-tabs" class="flex justify-center items-center space-x-4 md:space-x-8 mb-12">
-                <!-- Tab buttons will be generated by JS -->
-            </div>
-
-            <!-- Image Carousel -->
-            <div id="gallery-slider-container" class="w-full overflow-hidden">
-                <div id="gallery-track" class="flex items-center transition-transform duration-500 ease-in-out">
-                    <!-- Image slides will be injected by JS -->
-                </div>
-            </div>
-            
-            <!-- Slider Navigation -->
-            <div class="flex justify-center items-center mt-8 space-x-6">
-                <button id="gallery-back" class="font-semibold hover:text-black transition">&larr; Back</button>
-                <div id="gallery-dots" class="flex items-center space-x-2"></div>
-                <button id="gallery-next" class="font-semibold hover:text-black transition">Next &rarr;</button>
+<!-- ======================================================= -->
+<!-- GLIMPSES GALLERY SECTION (CORRECTED & RESPONSIVE) -->
+<!-- ======================================================= -->
+<section id="glimpses-gallery" class="py-16 md:py-24 overflow-hidden"> <!-- overflow-hidden on the section is important -->
+    
+    <!-- Container for Centered Header/Tabs -->
+    <div class="container mx-auto px-6">
+        <div class="text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-brand-purple tracking-wider">Glimpses Gallery</h2>
+            <div id="gallery-tabs" class="flex justify-center items-center space-x-4 md:space-x-8 my-10">
+                <button class="gallery-tab-btn active" data-category="flatA">FLAT A</button>
+                <button class="gallery-tab-btn" data-category="flatB">FLAT B</button>
+                <button class="gallery-tab-btn" data-category="flatC">FLAT C</button>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Gallery Swiper (Now Full-Width) -->
+    <div class="swiper gallery-swiper">
+        <div class="swiper-wrapper items-center max-w-xl md:max-w-4xl"> <!-- `items-center` vertically aligns slides if heights differ -->
+            <!-- Slides for FLAT A (Initial Load) -->
+            <div class="swiper-slide">
+                <img src="assets/images/image/Rectangle 47.png" alt="Gallery Image" class="w-full h-auto ">
+            </div>
+            <div class="swiper-slide">
+                <img src="assets/images/image/building-1.png" alt="Gallery Image" class="w-full h-auto ">
+            </div>
+            <div class="swiper-slide">
+                <img src="assets/images/image/Rectangle 45.png" alt="Gallery Image" class="w-full h-auto ">
+            </div>
+        </div>
+    </div>
+
+    <!-- Container for Centered Navigation -->
+    <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center mt-12 max-w-sm mx-auto md:max-w-md">
+            <button id="gallery-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                <span>&larr;</span>
+                <span class="hidden md:inline">Back</span>
+            </button>
+            <div id="gallery-dots" class="flex justify-center items-center space-x-2">
+                <!-- Swiper pagination -->
+            </div>
+            <button id="gallery-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                <span class="hidden md:inline">Next</span>
+                <span>&rarr;</span>
+            </button>
+        </div>
+    </div>
+</section>
 
     <!-- ======================================================= -->
     <!-- LOCATION BENEFITS SECTION (ADD THIS CODE) -->
@@ -455,34 +575,66 @@
         </div>
     </section>
 
-     <!-- ======================================================= -->
-    <!-- AMENITIES SECTION (ADD THIS CODE) -->
     <!-- ======================================================= -->
-    <section id="amenities-slider" class="bg-white py-16 md:py-24">
-        <div class="container mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-brand-purple">Amenities</h2>
-                <p class="text-text-primary mt-4 max-w-xl mx-auto">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
-                </p>
-            </div>
+<!-- AMENITIES SECTION (NEW & RESPONSIVE) -->
+<!-- ======================================================= -->
+<section id="amenities-section" class="py-16 md:py-24 overflow-hidden">
+    <div class="container mx-auto">
+        <!-- Section Header -->
+        <div class="text-center px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-brand-purple tracking-wider">Amenities</h2>
+            <p class="max-w-xl mx-auto mt-4 mb-12 text-text-primary">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
+            </p>
+        </div>
 
-            <!-- Carousel Container -->
-            <div id="amenities-slider-container" class="w-full overflow-hidden">
-                <div id="amenities-track" class="flex transition-transform duration-500 ease-in-out">
-                    <!-- Amenity cards will be injected here by JS -->
+        <!-- Amenities Swiper -->
+        <div class="swiper amenities-swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide text-start">
+                    <img src="assets/images/image/Rectangle 41.png" alt="Card Room" class="w-full h-auto object-cover shadow-lg">
+                    <p class="mt-4 text-xl font-semibold text-black">Card Room</p>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide text-start">
+                    <img src="assets/images/image/Rectangle 41.png" alt="Gymnasium" class="w-full h-auto object-cover shadow-lg">
+                    <p class="mt-4 text-xl font-semibold text-black">Gymnasium</p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide text-start">
+                    <img src="assets/images/image/Rectangle 41.png" alt="Lift Lobby" class="w-full h-auto object-cover shadow-lg">
+                    <p class="mt-4 text-xl font-semibold text-black">Lift Lobby</p>
+                </div>
+                <!-- Slide 4 (Extra) -->
+                <div class="swiper-slide text-start">
+                    <img src="assets/images/image/Rectangle 41.png" alt="Rooftop Garden" class="w-full h-auto object-cover shadow-lg">
+                    <p class="mt-4 text-xl font-semibold text-black">Rooftop Garden</p>
+                </div>
+                <!-- Slide 5 (Extra) -->
+                 <div class="swiper-slide text-start">
+                    <img src="assets/images/image/Rectangle 41.png" alt="Community Hall" class="w-full h-auto object-cover shadow-lg">
+                    <p class="mt-4 text-xl font-semibold text-black">Community Hall</p>
                 </div>
             </div>
-            
-            <!-- Slider Navigation -->
-            <div class="flex justify-center items-center mt-8 space-x-6">
-                <button id="amenities-back" class="font-semibold hover:text-black transition">&larr; Back</button>
-                <div id="amenities-dots" class="flex items-center space-x-2"></div>
-                <button id="amenities-next" class="font-semibold hover:text-black transition">Next &rarr;</button>
-            </div>
         </div>
-    </section>
+
+        <!-- Slider Navigation -->
+        <div class="flex justify-between items-center mt-12 max-w-sm mx-auto md:max-w-md px-6">
+            <button id="amenities-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                <span>&larr;</span>
+                <span class="hidden md:inline">Back</span>
+            </button>
+            <div id="amenities-dots" class="flex justify-center items-center space-x-2">
+                <!-- Swiper pagination -->
+            </div>
+            <button id="amenities-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
+                <span class="hidden md:inline">Next</span>
+                <span>&rarr;</span>
+            </button>
+        </div>
+    </div>
+</section>
 
      <!-- ======================================================= -->
     <!-- AREA STATEMENT SECTION (ADD THIS CODE) -->
@@ -683,17 +835,20 @@
 </footer>
 
     <!-- VIDEO MODAL -->
-    
-    <script src="js/main.js"></script>
 
-    <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="relative w-full max-w-4xl h-auto">
-            <button id="close-modal-btn" class="absolute -top-2 -right-2 md:-top-4 md:-right-4 text-white bg-black rounded-full h-10 w-10 flex items-center justify-center text-2xl hover:bg-gray-700 transition-colors">&times;</button>
-            <div class="video-responsive-container">
-                 <iframe id="youtube-iframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
+<!-- ======================================================= -->
+<!-- UNIVERSAL LIGHTBOX (MODAL)                             -->
+<!-- ======================================================= -->
+<div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="lightbox-content" class="relative w-full max-w-4xl transform scale-95 transition-transform duration-300">
+        <!-- Content (image or video) is injected by JS -->
     </div>
+    <button id="lightbox-close" class="absolute top-4 right-4 text-white text-5xl font-light hover:text-gray-300 transition-colors z-50">&times;</button>
+</div>
+
+        <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
