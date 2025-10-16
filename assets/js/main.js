@@ -233,17 +233,16 @@ $(function() { // Shorthand for $(document).ready()
         }
     });
 
-
+ // =======================================================
+    // HEADER & NAVIGATION LOGIC (UNIFIED FOR BOTH HEADERS)
     // =======================================================
-    // HEADER & NAVIGATION LOGIC (NEW & UNIFIED)
-    // =======================================================
 
-    // --- Desktop Projects Dropdown ---
+    // --- Header 1: Desktop Projects Dropdown ---
     const $projectsDropdownBtn = $('#projects-dropdown-btn');
     const $projectsDropdownPanel = $('#projects-dropdown-panel');
 
     $projectsDropdownBtn.on('click', function(event) {
-        event.stopPropagation(); // Prevent the click from bubbling up to the window
+        event.stopPropagation();
         $projectsDropdownPanel.toggleClass('hidden');
     });
 
@@ -254,27 +253,41 @@ $(function() { // Shorthand for $(document).ready()
         }
     });
 
-    // --- Mobile Menu Overlay ---
+    // --- Header 1: Mobile Menu Panel ---
     const $mobileMenu = $('#mobile-menu');
-    const $mobileMenuBtn = $('#mobile-menu-btn');
-    const $mobileMenuCloseBtn = $('#mobile-menu-close-btn');
-
-    $mobileMenuBtn.on('click', function() {
+    $('#mobile-menu-btn').on('click', function() {
         $mobileMenu.removeClass('hidden');
         $('body').addClass('overflow-hidden');
     });
 
-    $mobileMenuCloseBtn.on('click', function() {
+    $('#mobile-menu-close-btn').on('click', function() {
         $mobileMenu.addClass('hidden');
         $('body').removeClass('overflow-hidden');
     });
     
-    // --- Mobile Submenu Toggle ---
-    const $mobileProjectsBtn = $('#mobile-projects-btn');
-    const $mobileProjectsSubmenu = $('#mobile-projects-submenu');
-
-    $mobileProjectsBtn.on('click', function() {
-        $mobileProjectsSubmenu.slideToggle(300); // Smooth slide animation
+    // --- Header 1: Mobile Submenu Toggle ---
+    $('#mobile-projects-btn').on('click', function() {
+        $('#mobile-projects-submenu').slideToggle(300);
         $(this).find('svg').toggleClass('rotate-180');
+    });
+
+    // --- Header 2: Unified Full Screen Menu (Desktop & Mobile) ---
+    const $fullMenuOverlay = $('#full-menu-overlay');
+    // Open menu with EITHER the desktop 'MENU' button OR the mobile hamburger icon
+    $('#desktop-menu-btn, #mobile-menu-btn-header2').on('click', function() {
+        $fullMenuOverlay.removeClass('hidden');
+        $('body').addClass('overflow-hidden'); // Prevent background scrolling
+    });
+
+    // Close menu with the 'x' button
+    $('#menu-close-btn').on('click', function() {
+        $fullMenuOverlay.addClass('hidden');
+        $('body').removeClass('overflow-hidden');
+    });
+    
+    // --- Header 2: Submenu Toggle ---
+    $('#mobile-projects-btn-header2').on('click', function() {
+        $('#mobile-projects-submenu-header2').slideToggle(300); // Smooth slide animation
+        $(this).find('svg').toggleClass('rotate-180'); // Rotate the arrow
     });
 });

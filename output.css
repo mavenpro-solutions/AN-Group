@@ -8,6 +8,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-purple-600: oklch(55.8% 0.288 302.321);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
     --color-gray-300: oklch(87.2% 0.01 258.338);
@@ -758,6 +759,9 @@
   }
   .bg-gray-500 {
     background-color: var(--color-gray-500);
+  }
+  .bg-purple-600 {
+    background-color: var(--color-purple-600);
   }
   .bg-transparent {
     background-color: transparent;
@@ -1547,7 +1551,7 @@
     font-style: normal;
     font-weight: 200 700;
     font-display: swap;
-    src: url("/assets/fonts/Jost-Medium.woff") format("woff");
+    src: url("assets/fonts/Jost-Medium.woff") format("woff");
   }
   .desktop-nav-link {
     position: relative;
