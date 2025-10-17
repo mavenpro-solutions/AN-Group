@@ -93,33 +93,49 @@
     color: white;
   }
 
+ 
    /*
   |--------------------------------------------------------------------------
-  | NEW STYLES FOR HEADER NAVIGATION
+  | HEADER NAVIGATION STYLES
   |--------------------------------------------------------------------------
   */
+
+  /* For Header 1 (light text on dark bg) */
   .desktop-nav-link {
     @apply relative text-lg font-medium text-white transition-colors duration-200 hover:text-brand-peach;
   }
-
-  /* Underline effect for desktop links */
   .desktop-nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-brand-peach transform scale-x-0 origin-center transition-transform duration-300;
+    @apply absolute -bottom-1 left-0 w-full h-0.5 bg-brand-peach transform scale-x-0 origin-center transition-transform duration-300;
   }
-
   .desktop-nav-link:hover::after {
     @apply scale-x-100;
   }
 
-  /* --- NEW --- Style for the desktop dropdown when it's open for a smooth fade-in effect */
-  #projects-dropdown-panel.is-open {
-    @apply opacity-100 transform -translate-y-0;
+  /* --- NEW --- For Header 2 (dark text on light bg) */
+  .desktop-nav-link-dark {
+    @apply relative text-lg font-medium text-text-primary transition-colors duration-200 hover:text-brand-purple;
+  }
+  .desktop-nav-link-dark::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-full h-0.5 bg-brand-purple transform scale-x-0 origin-center transition-transform duration-300;
+  }
+  .desktop-nav-link-dark:hover::after {
+    @apply scale-x-100;
   }
   
-  /* Style for dropdown links */
+  /* Style for dropdown links (used by both headers) */
   .dropdown-link {
     @apply block w-full text-left px-4 py-2 text-lg text-text-primary hover:bg-gray-100 transition-colors duration-200;
+  }
+
+  /* --- NEW --- Multi-level Dropdown Styles */
+  .submenu-container:hover .submenu-panel {
+      @apply opacity-100 visible pointer-events-auto;
+  }
+
+  .submenu-panel {
+      @apply absolute top-0 left-full w-48 bg-white text-black rounded-md shadow-lg py-2 opacity-0 invisible pointer-events-none transition-opacity duration-300;
   }
 
   /* Style for mobile nav links */
@@ -127,11 +143,11 @@
     @apply block w-full py-3 text-gray-200 transition-colors duration-200;
   }
 
-  /* --- NEW --- Style for rotating the chevron icon on mobile when a submenu is open */
-  .mobile-submenu-trigger.is-open > .ti-chevron-down {
+  /* Style for rotating the chevron icon on mobile when a submenu is open */
+  .mobile-submenu-trigger.is-open > svg {
       @apply rotate-180;
   }
-
+  
   
 
   /*

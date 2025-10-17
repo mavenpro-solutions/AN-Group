@@ -279,25 +279,9 @@ $(function() { // Shorthand for $(document).ready()
         }
     });
 
- // =======================================================
-    // HEADER & NAVIGATION LOGIC (UNIFIED FOR BOTH HEADERS)
+  // =======================================================
+    // HEADER & NAVIGATION LOGIC (REVISED FOR MULTI-LEVEL)
     // =======================================================
-
-    // --- Header 1: Desktop Projects Dropdown ---
-    const $projectsDropdownBtn = $('#projects-dropdown-btn');
-    const $projectsDropdownPanel = $('#projects-dropdown-panel');
-
-    $projectsDropdownBtn.on('click', function(event) {
-        event.stopPropagation();
-        $projectsDropdownPanel.toggleClass('hidden');
-    });
-
-    // Close dropdown if clicked outside
-    $(window).on('click', function() {
-        if (!$projectsDropdownPanel.hasClass('hidden')) {
-            $projectsDropdownPanel.addClass('hidden');
-        }
-    });
 
     // --- Header 1: Mobile Menu Panel ---
     const $mobileMenu = $('#mobile-menu');
@@ -310,30 +294,28 @@ $(function() { // Shorthand for $(document).ready()
         $mobileMenu.addClass('hidden');
         $('body').removeClass('overflow-hidden');
     });
-    
-    // --- Header 1: Mobile Submenu Toggle ---
-    $('#mobile-projects-btn').on('click', function() {
-        $('#mobile-projects-submenu').slideToggle(300);
-        $(this).find('svg').toggleClass('rotate-180');
-    });
 
-    // --- Header 2: Unified Full Screen Menu (Desktop & Mobile) ---
+    // --- Header 2: Full Screen Menu (Mobile) ---
     const $fullMenuOverlay = $('#full-menu-overlay');
-    // Open menu with EITHER the desktop 'MENU' button OR the mobile hamburger icon
-    $('#desktop-menu-btn, #mobile-menu-btn-header2').on('click', function() {
+    $('#mobile-menu-btn-header2').on('click', function() {
         $fullMenuOverlay.removeClass('hidden');
         $('body').addClass('overflow-hidden'); // Prevent background scrolling
     });
 
-    // Close menu with the 'x' button
     $('#menu-close-btn').on('click', function() {
         $fullMenuOverlay.addClass('hidden');
         $('body').removeClass('overflow-hidden');
     });
-    
-    // --- Header 2: Submenu Toggle ---
-    $('#mobile-projects-btn-header2').on('click', function() {
-        $('#mobile-projects-submenu-header2').slideToggle(300); // Smooth slide animation
-        $(this).find('svg').toggleClass('rotate-180'); // Rotate the arrow
+
+    // --- Universal Multi-level Mobile Submenu Toggle ---
+    // This code works for BOTH mobile menus automatically.
+    $('.mobile-submenu-trigger').on('click', function() {
+        const $submenu = $(this).next('div'); // Get the submenu div right after the button
+        $submenu.slideToggle(300);
+        $(this).toggleClass('is-open');
+
+        // Optional: Close other open submenus at the same level
+        $(this).parent().siblings().find('.mobile-submenu-trigger').removeClass('is-open');
+        $(this).parent().siblings().find('div').slideUp(300);
     });
 });

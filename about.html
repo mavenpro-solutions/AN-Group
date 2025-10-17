@@ -12,7 +12,7 @@
 </head>
 <body class="bg-white font-sans">
 
- <!-- ======================================================= -->
+<!-- ======================================================= -->
 <!-- HEADER (REBUILT & FULLY RESPONSIVE) -->
 <!-- ======================================================= -->
 <header class="absolute top-0 left-0 w-full z-40 text-white p-6 md:p-8">
@@ -26,19 +26,51 @@
         <nav class="hidden md:flex items-center space-x-8">
             <a href="index.html" class="desktop-nav-link">Home</a>
             <a href="#" class="desktop-nav-link">About</a>
-            <!-- Projects Dropdown -->
-            <div class="relative" id="projects-dropdown">
-                <button id="projects-dropdown-btn" class="desktop-nav-link flex items-center space-x-2">
+            
+            <!-- Projects Dropdown (Multi-level) -->
+            <div class="relative group" id="projects-dropdown">
+                <button class="desktop-nav-link flex items-center space-x-2">
                     <span>Projects</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <!-- Dropdown Panel -->
-                <div id="projects-dropdown-panel" class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 bg-white text-black rounded-md shadow-lg py-2 hidden">
-                    <a href="#" class="dropdown-link">Ongoing</a>
-                    <a href="#" class="dropdown-link">Recent</a>
-                    <a href="#" class="dropdown-link">Past</a>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 bg-white text-black rounded-md shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
+                    <!-- Submenu Item: Ongoing -->
+                    <div class="relative submenu-container">
+                        <a href="#" class="dropdown-link flex justify-between items-center">
+                            <span>Ongoing</span>
+                            <svg class="w-4 h-4 transform -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <div class="submenu-panel">
+                            <a href="#" class="dropdown-link">Project 1</a>
+                            <a href="#" class="dropdown-link">Project 2</a>
+                        </div>
+                    </div>
+                    <!-- Submenu Item: Recent -->
+                    <div class="relative submenu-container">
+                        <a href="#" class="dropdown-link flex justify-between items-center">
+                            <span>Recent</span>
+                            <svg class="w-4 h-4 transform -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <div class="submenu-panel">
+                            <a href="#" class="dropdown-link">Project 1</a>
+                            <a href="#" class="dropdown-link">Project 2</a>
+                        </div>
+                    </div>
+                    <!-- Submenu Item: Past -->
+                    <div class="relative submenu-container">
+                        <a href="#" class="dropdown-link flex justify-between items-center">
+                            <span>Past</span>
+                            <svg class="w-4 h-4 transform -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <div class="submenu-panel">
+                            <a href="#" class="dropdown-link">Project 1</a>
+                            <a href="#" class="dropdown-link">Project 2</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
             <a href="#" class="desktop-nav-link">Contact</a>
             <a href="#" class="ml-4 bg-brand-peach text-black px-6 py-2 font-semibold hover:bg-white transition">ENQUIRE NOW</a>
         </nav>
@@ -55,7 +87,7 @@
         </div>
     </div>
 
-    <!-- Mobile Menu Panel (Now inside Header) -->
+    <!-- Mobile Menu Panel (Now inside Header with Multi-level support) -->
     <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-95 z-50 p-8 md:hidden hidden">
         <div class="flex justify-between items-center mb-12">
              <a href="index.html">
@@ -67,14 +99,44 @@
             <a href="index.html" class="mobile-nav-link">Home</a>
             <a href="#" class="mobile-nav-link">About</a>
             <div>
-                <button id="mobile-projects-btn" class="mobile-nav-link w-full text-left flex justify-between items-center">
+                <button class="mobile-nav-link w-full text-left flex justify-between items-center mobile-submenu-trigger">
                     <span>Projects</span>
                     <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="mobile-projects-submenu" class="pl-4 mt-2 hidden">
-                    <a href="#" class="block py-2 text-xl text-zinc-300">Ongoing</a>
-                    <a href="#" class="block py-2 text-xl text-zinc-300">Recent</a>
-                    <a href="#" class="block py-2 text-xl text-zinc-300">Past</a>
+                <div class="pl-4 mt-2 hidden">
+                    <!-- Sub-level 1: Ongoing -->
+                    <div>
+                        <button class="mobile-nav-link w-full text-left flex justify-between items-center text-xl text-zinc-300 mobile-submenu-trigger">
+                            <span>Ongoing</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="pl-4 mt-2 hidden">
+                            <a href="#" class="block py-2 text-lg text-zinc-400">Project 1</a>
+                            <a href="#" class="block py-2 text-lg text-zinc-400">Project 2</a>
+                        </div>
+                    </div>
+                    <!-- Sub-level 1: Recent -->
+                    <div>
+                        <button class="mobile-nav-link w-full text-left flex justify-between items-center text-xl text-zinc-300 mobile-submenu-trigger">
+                            <span>Recent</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="pl-4 mt-2 hidden">
+                            <a href="#" class="block py-2 text-lg text-zinc-400">Project 1</a>
+                            <a href="#" class="block py-2 text-lg text-zinc-400">Project 2</a>
+                        </div>
+                    </div>
+                    <!-- Sub-level 1: Past -->
+                     <div>
+                        <button class="mobile-nav-link w-full text-left flex justify-between items-center text-xl text-zinc-300 mobile-submenu-trigger">
+                            <span>Past</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="pl-4 mt-2 hidden">
+                            <a href="#" class="block py-2 text-lg text-zinc-400">Project 1</a>
+                            <a href="#" class="block py-2 text-lg text-zinc-400">Project 2</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <a href="#" class="mobile-nav-link">Contact</a>
