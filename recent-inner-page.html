@@ -8,6 +8,7 @@
     <!-- SwiperJS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="bg-brand-cream" style="background-image: url('images/marble-background.png'); background-size: cover;">
@@ -637,7 +638,7 @@
     </div>
 </section>
 
-     <!-- ======================================================= -->
+<!-- ======================================================= -->
     <!-- AREA STATEMENT SECTION (ADD THIS CODE) -->
     <!-- ======================================================= -->
     <section class="bg-brand-peach py-16 md:py-24" style="background-image: url('assets/images/image/Area-background.png'); background-size: cover;">
@@ -649,38 +650,45 @@
 
             <!-- Area Statement Table -->
             <div class="text-black font-semibold">
-                <!-- Grid Container -->
-                <div class="grid grid-cols-5 gap-x-4 gap-y-6 text-md md:text-lg">
+                
+                <!-- ADDED: A wrapper to enable horizontal scrolling on mobile devices -->
+                <div class="overflow-x-auto pb-4">
                     
-                    <!-- Headers -->
-                    <div class="font-bold">Flat MKD.</div>
-                    <div class="font-bold">BHK</div>
-                    <div class="font-bold">Covered Area</div>
-                    <div class="font-bold">Built-Up Area</div>
-                    <div class="font-bold">Saleable Area (23%)</div>
+                    <!-- Grid Container -->
+                    <!-- UPDATED: Added a minimum width for mobile to prevent text wrapping, and reset it for desktop -->
+                    <div class="grid grid-cols-5 gap-x-8 gap-y-6 text-md md:text-lg min-w-[600px] md:min-w-full">
+                        
+                        <!-- Headers -->
+                        <div class="font-bold">Flat MKD.</div>
+                        <div class="font-bold">BHK</div>
+                        <div class="font-bold">Covered Area</div>
+                        <div class="font-bold">Built-Up Area</div>
+                        <div class="font-bold">Saleable Area (23%)</div>
 
-                    <!-- Row for Flat A -->
-                    <div>Flat A</div>
-                    <div>2BHK</div>
-                    <div>593 SFT.</div>
-                    <div>650 SFT.</div>
-                    <div>845 SFT.</div>
-                    
-                    <!-- Row for Flat B -->
-                    <div>Flat B</div>
-                    <div>3BHK</div>
-                    <div>730 SFT.</div>
-                    <div>800 SFT.</div>
-                    <div>1040 SFT.</div>
+                        <!-- Row for Flat A -->
+                        <div>Flat A</div>
+                        <div>2BHK</div>
+                        <div>593 SFT.</div>
+                        <div>650 SFT.</div>
+                        <div>845 SFT.</div>
+                        
+                        <!-- Row for Flat B -->
+                        <div>Flat B</div>
+                        <div>3BHK</div>
+                        <div>730 SFT.</div>
+                        <div>800 SFT.</div>
+                        <div>1040 SFT.</div>
 
-                    <!-- Row for Flat C -->
-                    <div>Flat C</div>
-                    <div>2BHK</div>
-                    <div>520 SFT.</div>
-                    <div>570 SFT.</div>
-                    <div>740 SFT.</div>
-                    
+                        <!-- Row for Flat C -->
+                        <div>Flat C</div>
+                        <div>2BHK</div>
+                        <div>520 SFT.</div>
+                        <div>570 SFT.</div>
+                        <div>740 SFT.</div>
+                        
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>

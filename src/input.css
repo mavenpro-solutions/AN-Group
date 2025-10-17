@@ -93,7 +93,7 @@
     color: white;
   }
 
-  /*
+   /*
   |--------------------------------------------------------------------------
   | NEW STYLES FOR HEADER NAVIGATION
   |--------------------------------------------------------------------------
@@ -112,14 +112,24 @@
     @apply scale-x-100;
   }
 
+  /* --- NEW --- Style for the desktop dropdown when it's open for a smooth fade-in effect */
+  #projects-dropdown-panel.is-open {
+    @apply opacity-100 transform -translate-y-0;
+  }
+  
   /* Style for dropdown links */
   .dropdown-link {
-    @apply block w-full text-left px-4 py-2 text-lg text-text-primary hover:bg-gray-100;
+    @apply block w-full text-left px-4 py-2 text-lg text-text-primary hover:bg-gray-100 transition-colors duration-200;
   }
 
   /* Style for mobile nav links */
   .mobile-nav-link {
-    @apply block w-full py-3 text-gray-200;
+    @apply block w-full py-3 text-gray-200 transition-colors duration-200;
+  }
+
+  /* --- NEW --- Style for rotating the chevron icon on mobile when a submenu is open */
+  .mobile-submenu-trigger.is-open > .ti-chevron-down {
+      @apply rotate-180;
   }
 
   
