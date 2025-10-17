@@ -3,6 +3,52 @@ $(function() { // Shorthand for $(document).ready()
     // =======================================================
     // SWIPER.JS SLIDER INITIALIZATIONS
     // =======================================================
+  // --- 1. HERO SLIDER (WITH CLICK-TO-CHANGE FUNCTIONALITY) ---
+    new Swiper('.hero-swiper', {
+        // Core settings
+        loop: true,
+        effect: 'fade', // Use 'fade' effect to match the old style
+        fadeEffect: {
+            crossFade: true
+        },
+        
+        // Autoplay
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false, // Continue autoplay after user interaction
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.hero-button-next',
+            prevEl: '.hero-button-prev',
+        },
+
+        // Custom pagination for the '01', '02' style
+        pagination: {
+            el: '.hero-pagination',
+            clickable: true,
+            // This function creates the '01', '02', etc. format
+            renderBullet: function (index, className) {
+                const number = (index + 1).toString().padStart(2, '0');
+                return '<span class="' + className + '">' + number + '</span>';
+            },
+        },
+
+        // --- CHANGED: LOGIC UPDATED TO PREVENT SLIDE CHANGE WHEN CLICKING VIDEO ---
+        // This listens for a click. If the click is not on a video trigger, it moves to the next slide.
+        on: {
+            click: function (swiper, event) {
+                // Check if the clicked element (or its parent) is the video play button.
+                if ($(event.target).closest('.js-lightbox').length) {
+                    // If it is, do nothing. The universal lightbox script will handle opening the video.
+                    return; 
+                }
+                // Otherwise, if the click was anywhere else on the slide, go to the next one.
+                this.slideNext();
+            },
+        },
+    });
 
     // --- 1. Ongoing Projects Slider ---
     // ... (keep existing code for this slider)

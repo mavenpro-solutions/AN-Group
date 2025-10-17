@@ -336,7 +336,7 @@
                 <!-- Slider Navigation -->
                 <div class="flex justify-between items-center mt-8 max-w-sm mx-auto">
                     <button id="floorplan-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
-                        <span>&larr;</span>
+                        <span><i class="ti ti-arrow-narrow-left"></i></span>
                         <span class="hidden md:inline">Back</span>
                     </button>
                     <div id="floorplan-dots" class="flex justify-center items-center space-x-2">
@@ -344,7 +344,7 @@
                     </div>
                     <button id="floorplan-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
                         <span class="hidden md:inline">Next</span>
-                        <span>&rarr;</span>
+                        <span><i class="ti ti-arrow-narrow-right"></i></span>
                     </button>
                 </div>
             </div>
@@ -390,7 +390,7 @@
     <div class="container mx-auto px-6">
         <div class="flex justify-between items-center mt-12 max-w-sm mx-auto md:max-w-md">
             <button id="gallery-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
-                <span>&larr;</span>
+                <span><i class="ti ti-arrow-narrow-left"></i></span>
                 <span class="hidden md:inline">Back</span>
             </button>
             <div id="gallery-dots" class="flex justify-center items-center space-x-2">
@@ -398,7 +398,7 @@
             </div>
             <button id="gallery-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
                 <span class="hidden md:inline">Next</span>
-                <span>&rarr;</span>
+                <span><i class="ti ti-arrow-narrow-right"></i></span>
             </button>
         </div>
     </div>
@@ -452,7 +452,7 @@
         <!-- Slider Navigation -->
         <div class="flex justify-between items-center mt-12 max-w-sm mx-auto md:max-w-md px-6">
             <button id="amenities-back" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
-                <span>&larr;</span>
+                <span><i class="ti ti-arrow-narrow-left"></i></span>
                 <span class="hidden md:inline">Back</span>
             </button>
             <div id="amenities-dots" class="flex justify-center items-center space-x-2">
@@ -460,7 +460,7 @@
             </div>
             <button id="amenities-next" class="font-semibold text-black hover:text-brand-purple transition flex items-center space-x-2 text-2xl md:text-lg">
                 <span class="hidden md:inline">Next</span>
-                <span>&rarr;</span>
+                <span><i class="ti ti-arrow-narrow-right"></i></span>
             </button>
         </div>
     </div>
@@ -577,7 +577,7 @@
 
 
 
-    <!-- ======================================================= -->
+<!-- ======================================================= -->
 <!-- FOOTER (FINAL & PIXEL-PERFECT LAYOUT) -->
 <!-- ======================================================= -->
 <footer class="bg-footer-bg text-zinc-400 py-16">
@@ -586,21 +586,23 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-12 mb-12">
             
             <!-- Column 1: Corporate Info (Spans 4 of 12 columns) -->
-            <div class="lg:col-span-4 space-y-8">
-                <a href="#">
-                    <img src="assets/images/logos/footer-logo.png" alt="AN Group Logo" class="w-24 mb-8">
+            <!-- UPDATED: Added text-center for mobile and lg:text-left to reset for desktop -->
+            <div class="lg:col-span-4 space-y-8 text-center lg:text-left">
+                <a href="#" class="inline-block"> <!-- Added inline-block for better alignment control -->
+                    <img src="assets/images/logos/footer-logo.png" alt="AN Group Logo" class="w-24 mb-8 mx-auto lg:mx-0"> <!-- Centered logo on mobile -->
                 </a>
                 <div>
                     <p class="font-bold text-white tracking-wider text-md">CORPORATE OFFICE</p>
                     <p class="text-md mt-2">Nirmala Vatika, 18 Golaghata Road, Kolkata - 48</p>
                 </div>
                 <div>
-                    <p class="font-bold text-white tracking-wider text-md">CALL US ON: <span class="font-normal">+91 9830 106 520</span></p>
+                    <p class="font-bold text-white tracking-wider text-md">CALL US ON : <span class="font-normal">+91 9830 106 520</span></p>
                 </div>
                 <div>
-                    <p class="font-bold text-white tracking-wider text-md">EMAIL AT: <span class="font-normal">angroup.realestate@gmail.com</span></p>
+                    <p class="font-bold text-white tracking-wider text-md">EMAIL AT : <span class="font-normal">angroup.realestate@gmail.com</span></p>
                 </div>
-                <div class="flex space-x-4 pt-2">
+                <!-- UPDATED: Added justify-center for mobile and lg:justify-start to reset -->
+                <div class="flex space-x-4 pt-2 justify-center lg:justify-start">
                     <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085a4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a>
                     <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"></path></svg></a>
                     <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664 4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg></a>
@@ -612,7 +614,8 @@
                 <!-- Top Row: Link Columns -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
                     <!-- About Links -->
-                    <div class="space-y-4 text-md">
+                    <!-- UPDATED: Added text-center sm:text-left -->
+                    <div class="space-y-4 text-md text-center sm:text-left">
                         <h3 class="font-bold text-white tracking-wider mb-6">ABOUT AN GROUP</h3>
                         <a href="#" class="block hover:text-white transition-colors">Mission & Vision</a>
                         <a href="#" class="block hover:text-white transition-colors">Team</a>
@@ -621,14 +624,16 @@
                         <a href="#" class="block hover:text-white transition-colors">Awards & Achievements</a>
                     </div>
                     <!-- Projects Links -->
-                    <div class="space-y-4 text-md">
+                    <!-- UPDATED: Added text-center sm:text-left -->
+                    <div class="space-y-4 text-md text-center sm:text-left">
                         <h3 class="font-bold text-white tracking-wider mb-6">PROJECTS</h3>
                         <a href="#" class="block hover:text-white transition-colors">Ongoing</a>
                         <a href="#" class="block hover:text-white transition-colors">Recent</a>
                         <a href="#" class="block hover:text-white transition-colors">Past</a>
                     </div>
                     <!-- Media Centre Links -->
-                    <div class="space-y-4 text-md">
+                    <!-- UPDATED: Added text-center sm:text-left -->
+                    <div class="space-y-4 text-md text-center sm:text-left">
                         <h3 class="font-bold text-white tracking-wider mb-6">MEDIA CENTRE</h3>
                         <a href="#" class="block hover:text-white transition-colors">AN Updates</a>
                         <a href="#" class="block hover:text-white transition-colors">Photo Gallery</a>
@@ -639,13 +644,16 @@
                 <!-- Bottom Row: Privacy & Newsletter -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 items-end mt-12">
                     <!-- Privacy Links -->
-                    <div class="text-md">
+                     <!-- UPDATED: Added text-center sm:text-left -->
+                    <div class="text-md text-center sm:text-left">
                          <a href="#" class="hover:text-white">Privacy Policies</a> | <a href="#" class="hover:text-white">T&C</a>
                     </div>
                     <!-- Newsletter Form (Spanning 2 columns) -->
-                    <div class="sm:col-span-2 pr-24">
+                    <!-- UPDATED: Changed padding to be responsive and centered text for mobile -->
+                    <div class="sm:col-span-2 sm:pr-24 text-center sm:text-left">
                         <h3 class="font-bold text-white tracking-wider mb-4 text-md">SUBSCRIBE TO NEWSLETTER</h3>
-                         <form action="#" class="flex items-center border border-zinc-500 rounded-lg p-1 focus-within:border-white transition-colors">
+                         <!-- UPDATED: Constrained form width and centered it on mobile -->
+                         <form action="#" class="flex items-center border border-zinc-500 rounded-lg p-1 focus-within:border-white transition-colors max-w-md mx-auto sm:mx-0">
                              <input type="email" placeholder="Enter email address" class="bg-transparent w-full focus:outline-none px-3 text-md">
                              <button type="submit" class="bg-white text-black rounded-md p-2 flex-shrink-0 hover:bg-zinc-200 transition-colors">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -658,23 +666,28 @@
         </div>
 
         <!-- Footer bottom -->
+        <!-- No changes needed here, text-center is already applied -->
         <div class="container mx-auto px-6 border-t border-white pt-8 text-center text-md">
             <p>© AN Group Copyright 2025. All Rights Reserved</p>
         </div>
     </div>
 </footer>
 
-    <!-- VIDEO MODAL -->
-
 <!-- ======================================================= -->
-<!-- UNIVERSAL LIGHTBOX (MODAL)                             -->
+<!-- UPDATED: UNIVERSAL LIGHTBOX/POPUP STRUCTURE             -->
 <!-- ======================================================= -->
-<div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+<div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-opacity-60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <!-- Lightbox Container -->
     <div id="lightbox-content" class="relative w-full max-w-4xl transform scale-95 transition-transform duration-300">
-        <!-- Content (image or video) is injected by JS -->
+        <!-- Content (video/image) will be injected here by JavaScript -->
     </div>
-    <button id="lightbox-close" class="absolute top-4 right-4 text-white text-5xl font-light hover:text-zinc-300 transition-colors z-50">&times;</button>
+
+    <!-- Close Button -->
+    <button id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl leading-none hover:text-gray-300 transition-colors">
+        &times;
+    </button>
 </div>
+
 
         <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

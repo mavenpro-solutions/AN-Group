@@ -39,6 +39,60 @@
     src: url("assets/fonts/Jost-Medium.woff") format("woff");
   }
 
+
+/* This is the main container for the numbers AND the static line */
+  .hero-pagination {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 120px; /* Space for the line (96px) + gap (24px) */
+    transform: none !important;
+  }
+
+  /* Creates the STATIC WHITE LINE below the numbers */
+  .hero-pagination::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 96px;
+    background-color: white;
+  }
+
+  /* This styles all the numbers (the <span> tags) */
+  .hero-pagination .swiper-pagination-bullet {
+    /* --- THE CRITICAL FIX IS HERE --- */
+    background: transparent !important; /* This explicitly removes the background dot */
+    
+    /* Reset other Swiper styles to be safe */
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    
+    /* General Styling */
+    display: block;
+    cursor: pointer;
+    opacity: 1; /* Control visibility with text color instead */
+
+    /* Typography for the INACTIVE state */
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: rgba(214, 214, 214, 0.932);
+    
+    transition: color 0.3s ease, font-weight 0.3s ease;
+  }
+
+  /* This styles ONLY the ACTIVE number */
+  .hero-pagination .swiper-pagination-bullet-active {
+    font-weight: 700;
+    color: white;
+  }
+
   /*
   |--------------------------------------------------------------------------
   | NEW STYLES FOR HEADER NAVIGATION
