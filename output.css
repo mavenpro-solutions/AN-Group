@@ -1037,9 +1037,6 @@
   .text-brand-purple {
     color: var(--color-brand-purple);
   }
-  .text-green-600 {
-    color: var(--color-green-600);
-  }
   .text-red-600 {
     color: var(--color-red-600);
   }
@@ -1063,6 +1060,9 @@
   }
   .underline {
     text-decoration-line: underline;
+  }
+  .accent-black {
+    accent-color: var(--color-black);
   }
   .opacity-0 {
     opacity: 0%;

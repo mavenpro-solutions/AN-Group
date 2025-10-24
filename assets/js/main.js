@@ -325,55 +325,59 @@ $(function() { // Shorthand for $(document).ready()
     }
 
 
+
     // =======================================================
-    // CONTACT FORM SUBMISSION (AJAX to Node.js backend)
-    // =======================================================
-    $('#contact-form').on('submit', function(e) {
-        e.preventDefault(); // Prevent the default page reload on submit
+// CONTACT FORM SUBMISSION WITH SENDGRID
+// =======================================================
+$('#contact-form').on('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
 
-        const submitButton = $('#submit-button');
-        const feedbackMessage = $('#form-feedback');
+    // Create a status message element (optional, but good for user feedback)
+    if ($('#form-status').length === 0) {
+        $(this).append('<div id="form-status" class="mt-4"></div>');
+    }
+    const $status = $('#form-status');
 
-        // Get all selected projects
-        const selectedProjects = [];
-        $('input[name="projects"]:checked').each(function() {
-            selectedProjects.push($(this).val());
-        });
+    // Get the form data
+    const formData = {
+        name: $('#name').val(),
+        contact: $('#contact').val(),
+        email: $('#email').val(),
+        message: $('#message').val(),
+        // Get the values of all checked project checkboxes
+        projects: $('input[name="projects"]:checked').map(function() {
+            return this.value;
+        }).get()
+    };
+    
+    // Simple validation
+    if (!formData.name || !formData.email || !formData.message) {
+        $status.text('Please fill out all required fields.').css('color', 'red');
+        return;
+    }
 
-        // Collect all form data into an object
-        const formData = {
-            name: $('#name').val(),
-            contact: $('#contact').val(),
-            email: $('#email').val(),
-            message: $('#message').val(),
-            projects: selectedProjects,
-        };
+    // Show a loading message
+    $status.text('Sending...').css('color', 'black');
 
-        // Change button text to show it's processing
-        submitButton.text('SENDING...').prop('disabled', true);
-        feedbackMessage.text('').removeClass('text-green-600 text-red-600');
-
-        // Send the data to your backend server using AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:3000/send-email', // The URL of your backend endpoint
-            data: JSON.stringify(formData),
-            contentType: 'application/json',
-            success: function(response) {
-                // Handle success
-                feedbackMessage.text(response.message).addClass('text-green-600');
-                submitButton.text('SUBMIT').prop('disabled', false);
-                $('#contact-form')[0].reset(); // Clear the form
-            },
-            error: function(xhr) {
-                // Handle errors
-                const errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'An error occurred.';
-                feedbackMessage.text(errorMessage).addClass('text-red-600');
-                submitButton.text('SUBMIT').prop('disabled', false);
-            }
-        });
+    // Send the data to your backend server using AJAX
+    $.ajax({
+        type: 'POST',
+        // IMPORTANT: Use the URL of your running backend server
+        url: 'http://localhost:3000/send-email', 
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function(response) {
+            // On success, show a success message and clear the form
+            $status.text(response.message).css('color', 'green');
+            $('#contact-form')[0].reset(); // Clear the form fields
+        },
+        error: function(error) {
+            // On error, show an error message
+            const errorMessage = error.responseJSON ? error.responseJSON.message : 'An unknown error occurred.';
+            $status.text(errorMessage).css('color', 'red');
+        }
     });
-
+});
     // =======================================================
     // UNIVERSAL LIGHTBOX/POPUP LOGIC (ADD THIS CODE)
     // =======================================================
